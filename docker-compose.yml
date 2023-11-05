@@ -1,15 +1,16 @@
-version: '3.5'
+version: '4'
 
 services:
-  postgres:
-    container_name: postgres-container
+  db:
+    container_name: budget-buddy
     image: postgres:latest
     environment:
       POSTGRES_USER: super_admin
       POSTGRES_PASSWORD: mysecretpassword
-      PGDATA: /data/postgres
+      PGDATA: /data/budget-buddy
+      POSTGRES_DB: budget-buddy
     volumes:
-      - postgres-db:/data/postgres
+      - postgres-db:/data/budget-buddy
     ports:
       - "5432:5432"
 

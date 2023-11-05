@@ -1,32 +1,31 @@
 package com.budgetbuddy.budget_buddy.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "budgets")
-@AllArgsConstructor
-@Getter
-@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
-public class Budgets {
+public class Budget {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private static UUID id;
+    private UUID budgetId;
 
     @Column(name = "name")
-    private static String name;
+    @NonNull
+    private String name;
 
     @Column(name = "description")
-    private static String description;
-
-    @Column(name = "category")
-    private static String category;
-
+    @NonNull
+    private String description;
 }

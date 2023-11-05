@@ -1,32 +1,37 @@
 package com.budgetbuddy.budget_buddy.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 @Entity
 @Table(name = "user_additional_data")
-@AllArgsConstructor
-@Getter
-@Setter
+@RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
 public class UserAdditionalData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private static UUID id;
+    @NonNull
+    private UUID userId;
 
     @Column(name = "first_name")
-    private static String firstName;
+    @NonNull
+    private String firstName;
 
     @Column(name = "last_name")
-    private static String lastName;
+    @NonNull
+    private String lastName;
 
     @Column(name = "budget_ids")
-    private static List<String> budgetIds;
+    @NonNull
+    @ElementCollection
+    private List<UUID> budgetIds;
 }

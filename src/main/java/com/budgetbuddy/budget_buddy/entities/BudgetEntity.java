@@ -11,25 +11,30 @@ import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "user_login_data")
-@NoArgsConstructor
+@Table(name = "budget_entity")
 @RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
-public class UserLoginData {
+public class BudgetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID userId;
+    private UUID entityId;
 
-    @Column(name = "login")
+    @Column(name = "amount")
     @NonNull
-    private String login;
+    private float amount;
 
-    @Column(name = "password")
+    @Column(name = "currency")
     @NonNull
-    private String password;
+    private String currency;
 
-    @Column(name = "salt")
+    @Column(name = "category")
     @NonNull
-    private String salt;
+    private String category;
+
+    @Column(name = "budgetId")
+    @NonNull
+    private UUID budgetId;   //foreign key of Budgets.id
+
 }
