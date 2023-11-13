@@ -1,6 +1,6 @@
 package com.budgetbuddy.budget_buddy.repositories;
 
-import com.budgetbuddy.budget_buddy.entities.BudgetEntity;
+import com.budgetbuddy.budget_buddy.models.BudgetEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

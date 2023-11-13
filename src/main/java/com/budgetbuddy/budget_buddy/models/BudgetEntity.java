@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.entities;
+package com.budgetbuddy.budget_buddy.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
