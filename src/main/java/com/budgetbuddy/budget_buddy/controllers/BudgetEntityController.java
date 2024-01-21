@@ -19,25 +19,12 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/data")
 @CrossOrigin
 public class BudgetEntityController {
 
     @Autowired
     BudgetEntityRepository budgetEntityRepository;
-
-    @GetMapping("/budget-entities/{budgetEntityId}")
-    public ResponseEntity<List<BudgetEntity>> getBudgetEntities(@PathVariable("budgetEntityId") UUID budgetEntityId) {
-        try {
-            List<BudgetEntity> budgetEntities = new ArrayList<BudgetEntity>(budgetEntityRepository.getBudgetEntities(budgetEntityId));
-            if (budgetEntities.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(budgetEntities, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
     @PostMapping("/budget-entities")
     public ResponseEntity<BudgetEntity> createBudgetEntity(@RequestBody BudgetEntity budgetEntity) {
@@ -47,7 +34,7 @@ public class BudgetEntityController {
                             budgetEntity.getAmount(),
                             budgetEntity.getCurrency(),
                             budgetEntity.getCategory(),
-                            budgetEntity.getBudgetId()
+                            budgetEntity.getDate()
                     ));
             return new ResponseEntity<>(_budgetEntity, HttpStatus.CREATED);
         } catch (Exception e) {

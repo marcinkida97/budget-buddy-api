@@ -7,11 +7,12 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Entity
-@Table(name = "budget_entity")
+@Table(name = "budget_entities")
 @RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -33,8 +34,10 @@ public class BudgetEntity {
     @NonNull
     private String category;
 
-    @Column(name = "budgetId")
+    @Column(name = "date", columnDefinition = "DATE")
     @NonNull
-    private UUID budgetId;   //foreign key of Budgets.id
+    private String date;
 
+    @ManyToMany(mappedBy = "budgetEntities")
+    private Set<Budget> budgets;
 }
