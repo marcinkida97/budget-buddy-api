@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.models.requests;
+package com.budgetbuddy.budget_buddy.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

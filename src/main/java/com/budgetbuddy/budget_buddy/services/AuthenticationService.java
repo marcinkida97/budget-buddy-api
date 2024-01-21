@@ -3,9 +3,9 @@ package com.budgetbuddy.budget_buddy.services;
 import com.budgetbuddy.budget_buddy.security.JwtService;
 import com.budgetbuddy.budget_buddy.models.Role;
 import com.budgetbuddy.budget_buddy.models.User;
-import com.budgetbuddy.budget_buddy.models.requests.AuthenticationRequest;
-import com.budgetbuddy.budget_buddy.models.requests.RegisterRequest;
-import com.budgetbuddy.budget_buddy.models.responses.AuthenticationResponse;
+import com.budgetbuddy.budget_buddy.requests.AuthenticationRequest;
+import com.budgetbuddy.budget_buddy.requests.RegisterRequest;
+import com.budgetbuddy.budget_buddy.responses.AuthenticationResponse;
 import com.budgetbuddy.budget_buddy.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,6 +37,7 @@ public class AuthenticationService {
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .firstname(request.getFirstname())
                 .build();
     }
 
@@ -55,6 +56,7 @@ public class AuthenticationService {
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .firstname(user.getFirstname())
                 .build();
     }
 }

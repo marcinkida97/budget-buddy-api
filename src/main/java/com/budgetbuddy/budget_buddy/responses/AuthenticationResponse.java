@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.models.responses;
+package com.budgetbuddy.budget_buddy.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class AuthenticationResponse {
 
     private String token;
+    private String firstname;
+    private String lastname;
 }

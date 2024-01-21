@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.controlers;
+package com.budgetbuddy.budget_buddy.controllers;
 
 import com.budgetbuddy.budget_buddy.models.BudgetEntity;
 import com.budgetbuddy.budget_buddy.repositories.BudgetEntityRepository;

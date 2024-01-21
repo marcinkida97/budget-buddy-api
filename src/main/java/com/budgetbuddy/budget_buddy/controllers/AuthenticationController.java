@@ -1,8 +1,8 @@
-package com.budgetbuddy.budget_buddy.controlers;
+package com.budgetbuddy.budget_buddy.controllers;
 
-import com.budgetbuddy.budget_buddy.models.requests.AuthenticationRequest;
-import com.budgetbuddy.budget_buddy.models.requests.RegisterRequest;
-import com.budgetbuddy.budget_buddy.models.responses.AuthenticationResponse;
+import com.budgetbuddy.budget_buddy.requests.AuthenticationRequest;
+import com.budgetbuddy.budget_buddy.requests.RegisterRequest;
+import com.budgetbuddy.budget_buddy.responses.AuthenticationResponse;
 import com.budgetbuddy.budget_buddy.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
