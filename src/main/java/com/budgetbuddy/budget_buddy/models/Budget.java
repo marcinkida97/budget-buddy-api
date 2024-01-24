@@ -1,6 +1,5 @@
 package com.budgetbuddy.budget_buddy.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
@@ -9,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -32,17 +32,15 @@ public class Budget {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "budgets")
-    @JsonBackReference
-    private Set<User> users;
+    @ElementCollection
+    @CollectionTable(name = "budget_entities", joinColumns = @JoinColumn(name = "budgetId"))
+    @Column(name = "entityId")
+    private Set<UUID> budgetEntitiesIds = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "budget_budget_entities",
-            joinColumns = @JoinColumn(name = "budget_id"),
-            inverseJoinColumns = @JoinColumn(name = "entity_id")
-    )
-    private Set<BudgetEntity> budgetEntities;
+    @ElementCollection
+    @CollectionTable(name = "budget_users", joinColumns = @JoinColumn(name = "budgetId"))
+    @Column(name = "userId")
+    private Set<UUID> budgetUsersIds = new HashSet<>();
 
     @Override
     public int hashCode() {

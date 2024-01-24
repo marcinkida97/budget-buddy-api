@@ -1,21 +1,24 @@
 package com.budgetbuddy.budget_buddy.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
-import java.util.Set;
+import java.util.Date;
 import java.util.UUID;
 
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "budget_entities")
-@RequiredArgsConstructor
-@NoArgsConstructor
-@ToString
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "entityId")
 public class BudgetEntity {
 
     @Id
@@ -26,9 +29,9 @@ public class BudgetEntity {
     @NonNull
     private float amount;
 
-    @Column(name = "currency")
+    @Column(name = "type")
     @NonNull
-    private String currency;
+    private String type;
 
     @Column(name = "category")
     @NonNull
@@ -36,8 +39,9 @@ public class BudgetEntity {
 
     @Column(name = "date", columnDefinition = "DATE")
     @NonNull
-    private String date;
+    private Date date;
 
-    @ManyToMany(mappedBy = "budgetEntities")
-    private Set<Budget> budgets;
+    @Column(name = "budgetId")
+    private UUID budgetId;
 }
+

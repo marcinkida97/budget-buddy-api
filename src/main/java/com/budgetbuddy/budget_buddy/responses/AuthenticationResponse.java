@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -17,5 +18,5 @@ public class AuthenticationResponse {
     private String token;
     private String firstname;
     private String lastname;
-    private Set<Budget> budgets;
+    private Set<UUID> usersBudgetsIds;
 }

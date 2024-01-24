@@ -27,13 +27,10 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final BudgetService budgetService;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var budget = Budget.builder()
-                .name("Primary")
-                .description("My budget")
-                .users(new HashSet<>())
-                .build();
+        var budget = budgetService.createBudget();
 
         var user = User.builder()
                 .firstname(request.getFirstname())
@@ -41,12 +38,9 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
-                .budgets(new HashSet<>(Collections.singletonList(budget)))
+                .usersBudgetsIds(new HashSet<>(Collections.singletonList(budget.getBudgetId())))
                 .build();
 
-        budget.getUsers().add(user);
-
-        budgetRepository.save(budget);
         userRepository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
@@ -75,7 +69,7 @@ public class AuthenticationService {
                 .token(jwtToken)
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())
-                .budgets(user.getBudgets())
+                .usersBudgetsIds(user.getUsersBudgetsIds())
                 .build();
     }
 }

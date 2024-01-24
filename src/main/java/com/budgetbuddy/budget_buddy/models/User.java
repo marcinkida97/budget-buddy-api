@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -43,14 +44,10 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "budget_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "budget_id")
-    )
-    @JsonManagedReference
-    private Set<Budget> budgets;
+    @ElementCollection
+    @CollectionTable(name = "user_budgets", joinColumns = @JoinColumn(name = "userId"))
+    @Column(name = "budgetId")
+    private Set<UUID> usersBudgetsIds = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private Role role;
