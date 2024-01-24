@@ -38,8 +38,8 @@ public class Budget {
     private Set<UUID> budgetEntitiesIds = new HashSet<>();
 
     @ElementCollection
-    @CollectionTable(name = "budget_users", joinColumns = @JoinColumn(name = "budgetId"))
-    @Column(name = "userId")
+    @CollectionTable(name = "budgets_users", joinColumns = @JoinColumn(name = "usersBudgetsIds"))
+    @Column(name = "budgetUsersIds")
     private Set<UUID> budgetUsersIds = new HashSet<>();
 
     @Override

@@ -45,8 +45,8 @@ public class User implements UserDetails {
     private String password;
 
     @ElementCollection
-    @CollectionTable(name = "user_budgets", joinColumns = @JoinColumn(name = "userId"))
-    @Column(name = "budgetId")
+    @CollectionTable(name = "budgets_users", joinColumns = @JoinColumn(name = "budgetUsersIds"))
+    @Column(name = "usersBudgetsIds")
     private Set<UUID> usersBudgetsIds = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
