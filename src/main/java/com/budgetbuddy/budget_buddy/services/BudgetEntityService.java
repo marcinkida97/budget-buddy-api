@@ -3,15 +3,30 @@ package com.budgetbuddy.budget_buddy.services;
 import com.budgetbuddy.budget_buddy.models.BudgetEntity;
 import com.budgetbuddy.budget_buddy.repositories.BudgetEntityRepository;
 import com.budgetbuddy.budget_buddy.requests.BudgetEntityRequest;
+import com.budgetbuddy.budget_buddy.requests.GetBudgetEntitiesRequest;
+import com.budgetbuddy.budget_buddy.responses.BudgetEntitiesListResponse;
 import com.budgetbuddy.budget_buddy.responses.BudgetEntityResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
 public class BudgetEntityService {
 
     private final BudgetEntityRepository budgetEntityRepository;
+
+    public BudgetEntitiesListResponse getBudgetEntities(GetBudgetEntitiesRequest request) {
+        var budgetEntitiesList = new ArrayList<BudgetEntity>();
+
+        request.getBudgetEntitiesIds().forEach(budgetEntityId ->
+                budgetEntitiesList.add(budgetEntityRepository.findByEntityId(budgetEntityId).orElseThrow()));
+
+        return BudgetEntitiesListResponse.builder()
+                .budgetEntitiesList(budgetEntitiesList)
+                .build();
+    }
 
     public BudgetEntityResponse addBudgetEntity(BudgetEntityRequest request) {
             var budgetEntity = BudgetEntity.builder()
