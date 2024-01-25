@@ -1,7 +1,5 @@
 package com.budgetbuddy.budget_buddy.services;
 
-import com.budgetbuddy.budget_buddy.models.Budget;
-import com.budgetbuddy.budget_buddy.repositories.BudgetRepository;
 import com.budgetbuddy.budget_buddy.security.JwtService;
 import com.budgetbuddy.budget_buddy.models.Role;
 import com.budgetbuddy.budget_buddy.models.User;
@@ -23,7 +21,6 @@ import java.util.HashSet;
 public class AuthenticationService {
 
     private final UserRepository userRepository;
-    private final BudgetRepository budgetRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -47,8 +44,7 @@ public class AuthenticationService {
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
+                .userId(user.getUserId())
                 .build();
     }
 
@@ -67,9 +63,7 @@ public class AuthenticationService {
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .firstname(user.getFirstname())
-                .lastname(user.getLastname())
-                .usersBudgetsIds(user.getUsersBudgetsIds())
+                .userId(user.getUserId())
                 .build();
     }
 }
