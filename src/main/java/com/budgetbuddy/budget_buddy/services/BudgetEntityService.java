@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +48,14 @@ public class BudgetEntityService {
                     .date(budgetEntity.getDate())
                     .budgetId(budgetEntity.getBudgetId())
                     .build();
+    }
+
+    public boolean deleteBudgetEntityById(UUID budgetEntityId) {
+        if (budgetEntityRepository.existsById(budgetEntityId)) {
+            budgetEntityRepository.deleteById(budgetEntityId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
