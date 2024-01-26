@@ -32,6 +32,9 @@ public class Budget {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "budget_constraints_id")
+    private UUID budgetConstraintsId;
+
     @ElementCollection
     @CollectionTable(name = "budget_entities", joinColumns = @JoinColumn(name = "budgetId"))
     @Column(name = "entityId")

@@ -38,7 +38,7 @@ public class AuthenticationService {
                 .usersBudgetsIds(new HashSet<>(Collections.singletonList(budget.getBudgetId())))
                 .build();
 
-        userRepository.save(user);
+        var savedUser = userRepository.save(user);
 
         var jwtToken = jwtService.generateToken(user);
 

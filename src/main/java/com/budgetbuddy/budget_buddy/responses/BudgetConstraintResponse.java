@@ -12,12 +12,9 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BudgetResponse {
+public class BudgetConstraintResponse {
 
+    private UUID budgetConstraintId;
     private UUID budgetId;
-    private String name;
-    private String description;
-    private Set<UUID> budgetEntitiesIds;
-    private Set<UUID> budgetUsersIds;
     private boolean isPrimary;
 }
