@@ -51,7 +51,7 @@ src/main/resources - zasoby, takie jak pliki konfiguracyjne
 
 ## Dokumentacja API
 
-Dokumentacja API jest dostępna pod adresem http://localhost:8080/swagger-ui.html po uruchomieniu aplikacji.
+Dokumentacja API znajduje się w katalogu głównym w pliku ApiDocumentation.md
 
 ## Autorzy
 
