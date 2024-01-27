@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.security;
+package config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

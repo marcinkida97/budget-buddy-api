@@ -1,4 +1,4 @@
-package com.budgetbuddy.budget_buddy.security;
+package config;
 
 import com.budgetbuddy.budget_buddy.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
