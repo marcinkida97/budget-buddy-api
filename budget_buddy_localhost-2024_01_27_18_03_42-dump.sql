@@ -141,58 +141,50 @@ ALTER TABLE public.users OWNER TO super_admin;
 -- Data for Name: budget_entities; Type: TABLE DATA; Schema: public; Owner: super_admin
 --
 
-COPY public.budget_entities (entity_id, amount, budget_id, category, date, type) FROM stdin;
-99af2ce2-a7e5-41c6-a12d-b0e0a5eb5aaf	5000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Salary	2024-01-10	Income
-56b71f4f-86ef-4549-b872-a060115bfb45	5000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Salary	2023-12-08	Income
-94e3eb33-623f-498f-9a27-ef0ff935ce70	5000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Salary	2023-11-10	Income
-f8f7633a-3bfc-4423-9fb5-63e3eb2732ae	5000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Salary	2023-10-10	Income
-a117ab13-4cdb-4033-805b-7834be30066f	5000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Salary	2023-09-08	Income
-1be715d0-4021-4dc2-bdab-4972d872293c	2000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Rent	2023-09-11	Expense
-271fc3eb-0d83-4d7e-a009-268ce391bc53	2000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Rent	2023-10-11	Expense
-f6a16a5a-aa7a-42df-ae44-9fd2b60cc7a5	2000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Rent	2023-11-13	Expense
-adbc693c-3000-4882-93d3-6e11a646fc67	2000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Rent	2023-12-11	Expense
-04e550dd-a50f-4cc5-a1ad-66c67905c865	2000	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Rent	2024-01-11	Expense
-7d3199c7-a340-4c56-9e07-4ae3f3a03996	254	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Groceries	2024-01-27	Expense
-f898d115-ff40-46f2-a383-4a2ef9b7486a	1	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Other	2024-02-01	Income
-be10836c-9bd9-4d3f-8e1e-f40a6d82c4a5	50	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Cinema	2024-01-15	Expense
-afe76b70-a040-47d9-927c-abfada374119	500	93a5a36e-3eeb-47d9-b78b-8da8ce912c46	Xmass gifts	2024-02-22	Expense
-\.
+INSERT INTO public.budget_entities VALUES ('99af2ce2-a7e5-41c6-a12d-b0e0a5eb5aaf', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2024-01-10', 'Income');
+INSERT INTO public.budget_entities VALUES ('56b71f4f-86ef-4549-b872-a060115bfb45', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2023-12-08', 'Income');
+INSERT INTO public.budget_entities VALUES ('94e3eb33-623f-498f-9a27-ef0ff935ce70', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2023-11-10', 'Income');
+INSERT INTO public.budget_entities VALUES ('f8f7633a-3bfc-4423-9fb5-63e3eb2732ae', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2023-10-10', 'Income');
+INSERT INTO public.budget_entities VALUES ('a117ab13-4cdb-4033-805b-7834be30066f', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2023-09-08', 'Income');
+INSERT INTO public.budget_entities VALUES ('1be715d0-4021-4dc2-bdab-4972d872293c', 2000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Rent', '2023-09-11', 'Expense');
+INSERT INTO public.budget_entities VALUES ('271fc3eb-0d83-4d7e-a009-268ce391bc53', 2000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Rent', '2023-10-11', 'Expense');
+INSERT INTO public.budget_entities VALUES ('f6a16a5a-aa7a-42df-ae44-9fd2b60cc7a5', 2000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Rent', '2023-11-13', 'Expense');
+INSERT INTO public.budget_entities VALUES ('adbc693c-3000-4882-93d3-6e11a646fc67', 2000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Rent', '2023-12-11', 'Expense');
+INSERT INTO public.budget_entities VALUES ('04e550dd-a50f-4cc5-a1ad-66c67905c865', 2000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Rent', '2024-01-11', 'Expense');
+INSERT INTO public.budget_entities VALUES ('7d3199c7-a340-4c56-9e07-4ae3f3a03996', 254, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Groceries', '2024-01-27', 'Expense');
+INSERT INTO public.budget_entities VALUES ('be10836c-9bd9-4d3f-8e1e-f40a6d82c4a5', 50, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Cinema', '2024-01-15', 'Expense');
+INSERT INTO public.budget_entities VALUES ('129fc74c-a4e2-471e-81d6-50d95857dfc4', 500, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Xmass gifts', '2023-12-22', 'Expense');
+INSERT INTO public.budget_entities VALUES ('597d2111-56ef-4643-97c9-84f7f615a5e3', 5000, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Salary', '2023-08-10', 'Income');
+INSERT INTO public.budget_entities VALUES ('38420bd7-04db-4f84-aa34-f4024160bf7f', 1500, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Bicycle', '2023-10-18', 'Expense');
+INSERT INTO public.budget_entities VALUES ('a5c40e76-8bab-490b-bd5e-50778f310e20', 2500, '93a5a36e-3eeb-47d9-b78b-8da8ce912c46', 'Bonus', '2023-10-06', 'Income');
 
 
 --
 -- Data for Name: budgets; Type: TABLE DATA; Schema: public; Owner: super_admin
 --
 
-COPY public.budgets (budget_id, budget_constraints_id, description, name) FROM stdin;
-93a5a36e-3eeb-47d9-b78b-8da8ce912c46	13d28535-3567-42a4-b88e-f17b8135418d	My primary budget	My budget
-\.
+INSERT INTO public.budgets VALUES ('93a5a36e-3eeb-47d9-b78b-8da8ce912c46', '13d28535-3567-42a4-b88e-f17b8135418d', 'My primary budget', 'My budget');
 
 
 --
 -- Data for Name: budgets_constraints; Type: TABLE DATA; Schema: public; Owner: super_admin
 --
 
-COPY public.budgets_constraints (budget_constraint_id, budget_id, is_primary) FROM stdin;
-13d28535-3567-42a4-b88e-f17b8135418d	\N	t
-\.
+INSERT INTO public.budgets_constraints VALUES ('13d28535-3567-42a4-b88e-f17b8135418d', NULL, true);
 
 
 --
 -- Data for Name: budgets_users; Type: TABLE DATA; Schema: public; Owner: super_admin
 --
 
-COPY public.budgets_users (budget_users_ids, users_budgets_ids) FROM stdin;
-59ed0bbb-29bb-4478-866d-686f818cfbfd	93a5a36e-3eeb-47d9-b78b-8da8ce912c46
-\.
+INSERT INTO public.budgets_users VALUES ('59ed0bbb-29bb-4478-866d-686f818cfbfd', '93a5a36e-3eeb-47d9-b78b-8da8ce912c46');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: super_admin
 --
 
-COPY public.users (user_id, email, first_name, last_name, password, role) FROM stdin;
-59ed0bbb-29bb-4478-866d-686f818cfbfd	mk@email.com	Marcin	Kida	$2a$10$YeHiLVqwf1o27iuodrhtVexLg3YFnZu0zThzKHhoed8sGizsxtklC	USER
-\.
+INSERT INTO public.users VALUES ('59ed0bbb-29bb-4478-866d-686f818cfbfd', 'mk@email.com', 'Marcin', 'Kida', '$2a$10$YeHiLVqwf1o27iuodrhtVexLg3YFnZu0zThzKHhoed8sGizsxtklC', 'USER');
 
 
 --
