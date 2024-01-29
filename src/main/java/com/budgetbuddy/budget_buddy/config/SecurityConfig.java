@@ -1,5 +1,6 @@
-package config;
+package com.budgetbuddy.budget_buddy.config;
 
+import com.budgetbuddy.budget_buddy.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

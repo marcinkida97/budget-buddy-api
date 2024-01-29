@@ -1,13 +1,16 @@
 package com.budgetbuddy.budget_buddy.services;
 
 import com.budgetbuddy.budget_buddy.models.Budget;
+import com.budgetbuddy.budget_buddy.models.BudgetConstraints;
 import com.budgetbuddy.budget_buddy.repositories.BudgetConstraintsRepository;
 import com.budgetbuddy.budget_buddy.repositories.BudgetRepository;
+import com.budgetbuddy.budget_buddy.responses.BudgetConstraintResponse;
 import com.budgetbuddy.budget_buddy.responses.BudgetResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,16 +22,16 @@ public class BudgetService {
     private final BudgetConstraintsService budgetConstraintsService;
 
     public BudgetResponse createBudget() {
-        var budgetConstraint = budgetConstraintsService.createBudgetConstraint();
+        BudgetConstraintResponse budgetConstraint = budgetConstraintsService.createBudgetConstraint();
 
-        var budget = Budget.builder()
+        Budget budget = Budget.builder()
                 .name("My budget")
                 .description("My primary budget")
                 .budgetConstraintsId(budgetConstraint.getBudgetConstraintId())
                 .budgetUsersIds(new HashSet<>())
                 .build();
 
-        var savedBudget = budgetRepository.save(budget);
+        Budget savedBudget = budgetRepository.save(budget);
 
         return BudgetResponse.builder()
                 .budgetId(savedBudget.getBudgetId())
@@ -41,15 +44,15 @@ public class BudgetService {
     }
 
     public BudgetResponse getBudgetById(UUID budgetId) {
-        var budgetOptional = budgetRepository.findByBudgetId(budgetId);
+        Optional<Budget> budgetOptional = budgetRepository.findByBudgetId(budgetId);
 
 
         if (budgetOptional.isPresent()) {
-            var budget = budgetOptional.get();
-            var budgetConstraintOptional = budgetConstraintsRepository.findByBudgetConstraintId(budget.getBudgetConstraintsId());
+            Budget budget = budgetOptional.get();
+            Optional<BudgetConstraints> budgetConstraintOptional = budgetConstraintsRepository.findByBudgetConstraintId(budget.getBudgetConstraintsId());
 
             if (budgetConstraintOptional.isPresent()) {
-                var budgetConstraint = budgetConstraintOptional.get();
+                BudgetConstraints budgetConstraint = budgetConstraintOptional.get();
 
                 return BudgetResponse.builder()
                         .budgetId(budget.getBudgetId())

@@ -1,5 +1,6 @@
 package com.budgetbuddy.budget_buddy.services;
 
+import com.budgetbuddy.budget_buddy.responses.BudgetResponse;
 import com.budgetbuddy.budget_buddy.security.JwtService;
 import com.budgetbuddy.budget_buddy.models.Role;
 import com.budgetbuddy.budget_buddy.models.User;
@@ -27,9 +28,9 @@ public class AuthenticationService {
     private final BudgetService budgetService;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var budget = budgetService.createBudget();
+        BudgetResponse budget = budgetService.createBudget();
 
-        var user = User.builder()
+        User user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
@@ -38,9 +39,9 @@ public class AuthenticationService {
                 .usersBudgetsIds(new HashSet<>(Collections.singletonList(budget.getBudgetId())))
                 .build();
 
-        var savedUser = userRepository.save(user);
+        userRepository.save(user);
 
-        var jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
@@ -56,10 +57,10 @@ public class AuthenticationService {
                 )
         );
 
-        var user = userRepository.findByEmail(request.getEmail())
+        User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow();
 
-        var jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user);
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)

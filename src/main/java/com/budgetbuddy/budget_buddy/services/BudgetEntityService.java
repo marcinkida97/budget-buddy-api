@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -19,7 +20,7 @@ public class BudgetEntityService {
     private final BudgetEntityRepository budgetEntityRepository;
 
     public BudgetEntitiesListResponse getBudgetEntities(GetBudgetEntitiesRequest request) {
-        var budgetEntitiesList = new ArrayList<BudgetEntity>();
+        List<BudgetEntity> budgetEntitiesList = new ArrayList<>();
 
         request.getBudgetEntitiesIds().forEach(budgetEntityId ->
                 budgetEntitiesList.add(budgetEntityRepository.findByEntityId(budgetEntityId).orElseThrow()));
@@ -30,7 +31,7 @@ public class BudgetEntityService {
     }
 
     public BudgetEntityResponse addBudgetEntity(BudgetEntityRequest request) {
-            var budgetEntity = BudgetEntity.builder()
+            BudgetEntity budgetEntity = BudgetEntity.builder()
                     .amount(request.getAmount())
                     .type(request.getType())
                     .category(request.getCategory())
@@ -54,8 +55,7 @@ public class BudgetEntityService {
         if (budgetEntityRepository.existsById(budgetEntityId)) {
             budgetEntityRepository.deleteById(budgetEntityId);
             return true;
-        } else {
-            return false;
         }
+            return false;
     }
 }

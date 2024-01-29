@@ -3,6 +3,8 @@
 ## Opis
 Budget Buddy Api to backendowa część aplikacji służącej do zarządzania budżetem. Aplikacja umożliwia użytkownikom tworzenie budżetów, śledzenie wydatków, zarządzanie kategoriami i więcej.
 
+* Klient do aplikacji znajduje się w osobnym repozyrotium pod linkiem https://github.com/marcinkida97/budget-buddy
+
 ## Wymagania wstępne
 1. Java 17 lub nowsza
 2. Docker

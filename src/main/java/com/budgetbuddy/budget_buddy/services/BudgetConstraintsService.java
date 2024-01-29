@@ -6,6 +6,7 @@ import com.budgetbuddy.budget_buddy.responses.BudgetConstraintResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -15,11 +16,11 @@ public class BudgetConstraintsService {
     private final BudgetConstraintsRepository budgetConstraintsRepository;
 
     public BudgetConstraintResponse createBudgetConstraint() {
-        var budgetConstraint = BudgetConstraints.builder()
+        BudgetConstraints budgetConstraint = BudgetConstraints.builder()
                 .isPrimary(true)
                 .build();
 
-        var savedBudgetConstraint = budgetConstraintsRepository.save(budgetConstraint);
+        BudgetConstraints savedBudgetConstraint = budgetConstraintsRepository.save(budgetConstraint);
 
         return BudgetConstraintResponse.builder()
                 .budgetConstraintId(savedBudgetConstraint.getBudgetConstraintId())
@@ -28,10 +29,10 @@ public class BudgetConstraintsService {
     }
 
     public BudgetConstraintResponse getBudgetConstraintById(UUID budgetConstraintId) {
-        var budgetConstraintResponse = budgetConstraintsRepository.findByBudgetConstraintId(budgetConstraintId);
+        Optional<BudgetConstraints> budgetConstraintResponse = budgetConstraintsRepository.findByBudgetConstraintId(budgetConstraintId);
 
         if (budgetConstraintResponse.isPresent()) {
-            var budgetConstraint = budgetConstraintResponse.get();
+            BudgetConstraints budgetConstraint = budgetConstraintResponse.get();
 
             return BudgetConstraintResponse.builder()
                     .budgetId(budgetConstraint.getBudgetId())
